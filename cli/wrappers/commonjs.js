@@ -1,7 +1,7 @@
 "use strict";
 
-var $protobuf = require($DEPENDENCY);
+var protobuf = require($DEPENDENCY);
 
 $OUTPUT;
 
-module.exports = $root;
+module.exports = root;

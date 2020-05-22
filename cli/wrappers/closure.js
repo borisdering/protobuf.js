@@ -1,7 +1,7 @@
-(function($protobuf) {
+(function(protobuf) {
     "use strict";
 
     $OUTPUT;
 
-    return $root;
+    return root;
 })(protobuf);

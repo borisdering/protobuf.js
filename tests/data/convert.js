@@ -1,15 +1,15 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
 "use strict";
 
-var $protobuf = require("../../minimal");
+var protobuf = require("../../minimal");
 
 // Common aliases
-var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+var $Reader = protobuf.Reader, $Writer = protobuf.Writer, $util = protobuf.util;
 
 // Exported root namespace
-var $root = $protobuf.roots.test_convert || ($protobuf.roots.test_convert = {});
+var root = protobuf.roots.test_convert || (protobuf.roots.test_convert = {});
 
-$root.Message = (function() {
+root.Message = (function() {
 
     /**
      * Properties of a Message.
@@ -136,8 +136,8 @@ $root.Message = (function() {
      * @memberof Message
      * @static
      * @param {IMessage} message Message message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     Message.encode = function encode(message, writer) {
         if (!writer)
@@ -180,8 +180,8 @@ $root.Message = (function() {
      * @memberof Message
      * @static
      * @param {IMessage} message Message message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     Message.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
@@ -192,16 +192,16 @@ $root.Message = (function() {
      * @function decode
      * @memberof Message
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
      * @returns {Message} Message
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     Message.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Message(), key;
+        var end = length === undefined ? reader.len : reader.pos + length, message = new root.Message(), key;
         while (reader.pos < end) {
             var tag = reader.uint32();
             switch (tag >>> 3) {
@@ -268,10 +268,10 @@ $root.Message = (function() {
      * @function decodeDelimited
      * @memberof Message
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @returns {Message} Message
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     Message.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
@@ -360,9 +360,9 @@ $root.Message = (function() {
      * @returns {Message} Message
      */
     Message.fromObject = function fromObject(object) {
-        if (object instanceof $root.Message)
+        if (object instanceof root.Message)
             return object;
-        var message = new $root.Message();
+        var message = new root.Message();
         if (object.stringVal != null)
             message.stringVal = String(object.stringVal);
         if (object.stringRepeated) {
@@ -460,7 +460,7 @@ $root.Message = (function() {
      * @memberof Message
      * @static
      * @param {Message} message Message
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @param {protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
     Message.toObject = function toObject(message, options) {
@@ -519,11 +519,11 @@ $root.Message = (function() {
                 object.bytesRepeated[j] = options.bytes === String ? $util.base64.encode(message.bytesRepeated[j], 0, message.bytesRepeated[j].length) : options.bytes === Array ? Array.prototype.slice.call(message.bytesRepeated[j]) : message.bytesRepeated[j];
         }
         if (message.enumVal != null && message.hasOwnProperty("enumVal"))
-            object.enumVal = options.enums === String ? $root.Message.SomeEnum[message.enumVal] : message.enumVal;
+            object.enumVal = options.enums === String ? root.Message.SomeEnum[message.enumVal] : message.enumVal;
         if (message.enumRepeated && message.enumRepeated.length) {
             object.enumRepeated = [];
             for (var j = 0; j < message.enumRepeated.length; ++j)
-                object.enumRepeated[j] = options.enums === String ? $root.Message.SomeEnum[message.enumRepeated[j]] : message.enumRepeated[j];
+                object.enumRepeated[j] = options.enums === String ? root.Message.SomeEnum[message.enumRepeated[j]] : message.enumRepeated[j];
         }
         var keys2;
         if (message.int64Map && (keys2 = Object.keys(message.int64Map)).length) {
@@ -545,7 +545,7 @@ $root.Message = (function() {
      * @returns {Object.<string,*>} JSON object
      */
     Message.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        return this.constructor.toObject(this, protobuf.util.toJSONOptions);
     };
 
     /**
@@ -565,4 +565,4 @@ $root.Message = (function() {
     return Message;
 })();
 
-module.exports = $root;
+module.exports = root;

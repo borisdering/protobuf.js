@@ -1,4 +1,4 @@
-import * as $protobuf from "../..";
+import * as protobuf from "../..";
 export interface IPackage {
     name?: (string|null);
     version?: (string|null);
@@ -39,13 +39,13 @@ export class Package implements IPackage {
     public types: string;
     public cliDependencies: string[];
     public static create(properties?: IPackage): Package;
-    public static encode(message: IPackage, writer?: $protobuf.Writer): $protobuf.Writer;
-    public static encodeDelimited(message: IPackage, writer?: $protobuf.Writer): $protobuf.Writer;
-    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): Package;
-    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): Package;
+    public static encode(message: IPackage, writer?: protobuf.Writer): protobuf.Writer;
+    public static encodeDelimited(message: IPackage, writer?: protobuf.Writer): protobuf.Writer;
+    public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): Package;
+    public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): Package;
     public static verify(message: { [k: string]: any }): (string|null);
     public static fromObject(object: { [k: string]: any }): Package;
-    public static toObject(message: Package, options?: $protobuf.IConversionOptions): { [k: string]: any };
+    public static toObject(message: Package, options?: protobuf.IConversionOptions): { [k: string]: any };
     public toJSON(): { [k: string]: any };
 }
 
@@ -61,13 +61,13 @@ export namespace Package {
         public type: string;
         public url: string;
         public static create(properties?: Package.IRepository): Package.Repository;
-        public static encode(message: Package.IRepository, writer?: $protobuf.Writer): $protobuf.Writer;
-        public static encodeDelimited(message: Package.IRepository, writer?: $protobuf.Writer): $protobuf.Writer;
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): Package.Repository;
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): Package.Repository;
+        public static encode(message: Package.IRepository, writer?: protobuf.Writer): protobuf.Writer;
+        public static encodeDelimited(message: Package.IRepository, writer?: protobuf.Writer): protobuf.Writer;
+        public static decode(reader: (protobuf.Reader|Uint8Array), length?: number): Package.Repository;
+        public static decodeDelimited(reader: (protobuf.Reader|Uint8Array)): Package.Repository;
         public static verify(message: { [k: string]: any }): (string|null);
         public static fromObject(object: { [k: string]: any }): Package.Repository;
-        public static toObject(message: Package.Repository, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        public static toObject(message: Package.Repository, options?: protobuf.IConversionOptions): { [k: string]: any };
         public toJSON(): { [k: string]: any };
     }
 }

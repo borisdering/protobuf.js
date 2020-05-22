@@ -291,7 +291,7 @@
 [:hash:](https://github.com/protobufjs/protobuf.js/commit/afefa3de09620f50346bdcfa04d52952824c3c8d) Properly implement $Properties interface in JSDoc, see [#723](https://github.com/protobufjs/protobuf.js/issues/723)<br />
 [:hash:](https://github.com/protobufjs/protobuf.js/commit/a1f23e09fb5635275bb7646dfafc70caef74c6b8) Recursively use $Properties inside of $Properties in static code, see [#717](https://github.com/protobufjs/protobuf.js/issues/717)<br />
 [:hash:](https://github.com/protobufjs/protobuf.js/commit/c3f0a2124c661bb9ba35f92c21a98a4405d30b47) Added --strict-long option to pbjs to always emit 'Long' instead of 'number|Long' (only relevant with long.js), see [#718](https://github.com/protobufjs/protobuf.js/issues/718)<br />
-[:hash:](https://github.com/protobufjs/protobuf.js/commit/0bc4a14501f84f93afd6ce2933ad00749c82f4df) Statically emitted long type is 'Long' now instead of '$protobuf.Long', see [#718](https://github.com/protobufjs/protobuf.js/issues/718)<br />
+[:hash:](https://github.com/protobufjs/protobuf.js/commit/0bc4a14501f84f93afd6ce2933ad00749c82f4df) Statically emitted long type is 'Long' now instead of 'protobuf.Long', see [#718](https://github.com/protobufjs/protobuf.js/issues/718)<br />
 [:hash:](https://github.com/protobufjs/protobuf.js/commit/a75625d176b7478e0e506f05e2cee5e3d7a0d89a) Decoupled message properties as an interface in static code for TS intellisense support, see [#717](https://github.com/protobufjs/protobuf.js/issues/717)<br />
 [:hash:](https://github.com/protobufjs/protobuf.js/commit/23f14a61e8c2f68b06d1bb4ed20b938764c78860) Static code statically resolves types[..], see [#715](https://github.com/protobufjs/protobuf.js/issues/715)<br />
 
@@ -621,7 +621,7 @@
 
 ### Other
 [:hash:](https://github.com/protobufjs/protobuf.js/commit/0643f93f5c0d96ed0ece5b47f54993ac3a827f1b) Some cleanup and added a logo<br />
-[:hash:](https://github.com/protobufjs/protobuf.js/commit/169638382de9efe35a1079c5f2045c33b858059a) use $protobuf.Long<br />
+[:hash:](https://github.com/protobufjs/protobuf.js/commit/169638382de9efe35a1079c5f2045c33b858059a) use protobuf.Long<br />
 
 ## [6.4.0](https://github.com/protobufjs/protobuf.js/releases/tag/6.4.0) ([release](https://github.com/protobufjs/protobuf.js/releases/tag/6.4.0))
 

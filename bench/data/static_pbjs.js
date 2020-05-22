@@ -1,13 +1,13 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
 "use strict";
 
-var $protobuf = require("../../minimal");
+var protobuf = require("../../minimal");
 
-var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+var $Reader = protobuf.Reader, $Writer = protobuf.Writer, $util = protobuf.util;
 
-var $root = $protobuf.roots.test_bench || ($protobuf.roots.test_bench = {});
+var root = protobuf.roots.test_bench || (protobuf.roots.test_bench = {});
 
-$root.Test = (function() {
+root.Test = (function() {
 
     function Test(properties) {
         if (properties)
@@ -29,7 +29,7 @@ $root.Test = (function() {
         if (message.uint32 != null && Object.hasOwnProperty.call(message, "uint32"))
             writer.uint32(16).uint32(message.uint32);
         if (message.inner != null && Object.hasOwnProperty.call(message, "inner"))
-            $root.Test.Inner.encode(message.inner, writer.uint32(26).fork()).ldelim();
+            root.Test.Inner.encode(message.inner, writer.uint32(26).fork()).ldelim();
         if (message.float != null && Object.hasOwnProperty.call(message, "float"))
             writer.uint32(37).float(message.float);
         return writer;
@@ -38,7 +38,7 @@ $root.Test = (function() {
     Test.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Test();
+        var end = length === undefined ? reader.len : reader.pos + length, message = new root.Test();
         while (reader.pos < end) {
             var tag = reader.uint32();
             switch (tag >>> 3) {
@@ -49,7 +49,7 @@ $root.Test = (function() {
                 message.uint32 = reader.uint32();
                 break;
             case 3:
-                message.inner = $root.Test.Inner.decode(reader, reader.uint32());
+                message.inner = root.Test.Inner.decode(reader, reader.uint32());
                 break;
             case 4:
                 message.float = reader.float();
@@ -81,16 +81,16 @@ $root.Test = (function() {
             if (message.int32 != null && Object.hasOwnProperty.call(message, "int32"))
                 writer.uint32(8).int32(message.int32);
             if (message.innerInner != null && Object.hasOwnProperty.call(message, "innerInner"))
-                $root.Test.Inner.InnerInner.encode(message.innerInner, writer.uint32(18).fork()).ldelim();
+                root.Test.Inner.InnerInner.encode(message.innerInner, writer.uint32(18).fork()).ldelim();
             if (message.outer != null && Object.hasOwnProperty.call(message, "outer"))
-                $root.Outer.encode(message.outer, writer.uint32(26).fork()).ldelim();
+                root.Outer.encode(message.outer, writer.uint32(26).fork()).ldelim();
             return writer;
         };
 
         Inner.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Test.Inner();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new root.Test.Inner();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
@@ -98,10 +98,10 @@ $root.Test = (function() {
                     message.int32 = reader.int32();
                     break;
                 case 2:
-                    message.innerInner = $root.Test.Inner.InnerInner.decode(reader, reader.uint32());
+                    message.innerInner = root.Test.Inner.InnerInner.decode(reader, reader.uint32());
                     break;
                 case 3:
-                    message.outer = $root.Outer.decode(reader, reader.uint32());
+                    message.outer = root.Outer.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -139,7 +139,7 @@ $root.Test = (function() {
             InnerInner.decode = function decode(reader, length) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Test.Inner.InnerInner();
+                var end = length === undefined ? reader.len : reader.pos + length, message = new root.Test.Inner.InnerInner();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
@@ -179,7 +179,7 @@ $root.Test = (function() {
     return Test;
 })();
 
-$root.Outer = (function() {
+root.Outer = (function() {
 
     function Outer(properties) {
         this.bool = [];
@@ -209,7 +209,7 @@ $root.Outer = (function() {
     Outer.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Outer();
+        var end = length === undefined ? reader.len : reader.pos + length, message = new root.Outer();
         while (reader.pos < end) {
             var tag = reader.uint32();
             switch (tag >>> 3) {
@@ -237,4 +237,4 @@ $root.Outer = (function() {
     return Outer;
 })();
 
-module.exports = $root;
+module.exports = root;

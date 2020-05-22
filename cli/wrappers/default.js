@@ -6,10 +6,10 @@
     /* CommonJS */ else if (typeof require === 'function' && typeof module === 'object' && module && module.exports)
         module.exports = factory(require($DEPENDENCY));
 
-})(this, function($protobuf) {
+})(this, function(protobuf) {
     "use strict";
 
     $OUTPUT;
 
-    return $root;
+    return root;
 });

@@ -1,15 +1,15 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
 "use strict";
 
-var $protobuf = require("../../minimal");
+var protobuf = require("../../minimal");
 
 // Common aliases
-var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+var $Reader = protobuf.Reader, $Writer = protobuf.Writer, $util = protobuf.util;
 
 // Exported root namespace
-var $root = $protobuf.roots.test_package || ($protobuf.roots.test_package = {});
+var root = protobuf.roots.test_package || (protobuf.roots.test_package = {});
 
-$root.Package = (function() {
+root.Package = (function() {
 
     /**
      * Properties of a Package.
@@ -209,8 +209,8 @@ $root.Package = (function() {
      * @memberof Package
      * @static
      * @param {IPackage} message Package message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     Package.encode = function encode(message, writer) {
         if (!writer)
@@ -226,7 +226,7 @@ $root.Package = (function() {
         if (message.license != null && Object.hasOwnProperty.call(message, "license"))
             writer.uint32(/* id 5, wireType 2 =*/42).string(message.license);
         if (message.repository != null && Object.hasOwnProperty.call(message, "repository"))
-            $root.Package.Repository.encode(message.repository, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+            root.Package.Repository.encode(message.repository, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
         if (message.bugs != null && Object.hasOwnProperty.call(message, "bugs"))
             writer.uint32(/* id 7, wireType 2 =*/58).string(message.bugs);
         if (message.homepage != null && Object.hasOwnProperty.call(message, "homepage"))
@@ -264,8 +264,8 @@ $root.Package = (function() {
      * @memberof Package
      * @static
      * @param {IPackage} message Package message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     Package.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
@@ -276,16 +276,16 @@ $root.Package = (function() {
      * @function decode
      * @memberof Package
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
      * @returns {Package} Package
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     Package.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Package(), key;
+        var end = length === undefined ? reader.len : reader.pos + length, message = new root.Package(), key;
         while (reader.pos < end) {
             var tag = reader.uint32();
             switch (tag >>> 3) {
@@ -308,7 +308,7 @@ $root.Package = (function() {
                 message.license = reader.string();
                 break;
             case 6:
-                message.repository = $root.Package.Repository.decode(reader, reader.uint32());
+                message.repository = root.Package.Repository.decode(reader, reader.uint32());
                 break;
             case 7:
                 message.bugs = reader.string();
@@ -377,10 +377,10 @@ $root.Package = (function() {
      * @function decodeDelimited
      * @memberof Package
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @returns {Package} Package
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     Package.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
@@ -418,7 +418,7 @@ $root.Package = (function() {
             if (!$util.isString(message.license))
                 return "license: string expected";
         if (message.repository != null && message.hasOwnProperty("repository")) {
-            var error = $root.Package.Repository.verify(message.repository);
+            var error = root.Package.Repository.verify(message.repository);
             if (error)
                 return "repository." + error;
         }
@@ -492,9 +492,9 @@ $root.Package = (function() {
      * @returns {Package} Package
      */
     Package.fromObject = function fromObject(object) {
-        if (object instanceof $root.Package)
+        if (object instanceof root.Package)
             return object;
-        var message = new $root.Package();
+        var message = new root.Package();
         if (object.name != null)
             message.name = String(object.name);
         if (object.version != null)
@@ -510,7 +510,7 @@ $root.Package = (function() {
         if (object.repository != null) {
             if (typeof object.repository !== "object")
                 throw TypeError(".Package.repository: object expected");
-            message.repository = $root.Package.Repository.fromObject(object.repository);
+            message.repository = root.Package.Repository.fromObject(object.repository);
         }
         if (object.bugs != null)
             message.bugs = String(object.bugs);
@@ -571,7 +571,7 @@ $root.Package = (function() {
      * @memberof Package
      * @static
      * @param {Package} message Package
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @param {protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
     Package.toObject = function toObject(message, options) {
@@ -612,7 +612,7 @@ $root.Package = (function() {
         if (message.license != null && message.hasOwnProperty("license"))
             object.license = message.license;
         if (message.repository != null && message.hasOwnProperty("repository"))
-            object.repository = $root.Package.Repository.toObject(message.repository, options);
+            object.repository = root.Package.Repository.toObject(message.repository, options);
         if (message.bugs != null && message.hasOwnProperty("bugs"))
             object.bugs = message.bugs;
         if (message.homepage != null && message.hasOwnProperty("homepage"))
@@ -665,7 +665,7 @@ $root.Package = (function() {
      * @returns {Object.<string,*>} JSON object
      */
     Package.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        return this.constructor.toObject(this, protobuf.util.toJSONOptions);
     };
 
     Package.Repository = (function() {
@@ -727,8 +727,8 @@ $root.Package = (function() {
          * @memberof Package.Repository
          * @static
          * @param {Package.IRepository} message Repository message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
+         * @param {protobuf.Writer} [writer] Writer to encode to
+         * @returns {protobuf.Writer} Writer
          */
         Repository.encode = function encode(message, writer) {
             if (!writer)
@@ -746,8 +746,8 @@ $root.Package = (function() {
          * @memberof Package.Repository
          * @static
          * @param {Package.IRepository} message Repository message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
+         * @param {protobuf.Writer} [writer] Writer to encode to
+         * @returns {protobuf.Writer} Writer
          */
         Repository.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
@@ -758,16 +758,16 @@ $root.Package = (function() {
          * @function decode
          * @memberof Package.Repository
          * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
          * @returns {Package.Repository} Repository
          * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
         Repository.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Package.Repository();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new root.Package.Repository();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
@@ -790,10 +790,10 @@ $root.Package = (function() {
          * @function decodeDelimited
          * @memberof Package.Repository
          * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @returns {Package.Repository} Repository
          * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
         Repository.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
@@ -830,9 +830,9 @@ $root.Package = (function() {
          * @returns {Package.Repository} Repository
          */
         Repository.fromObject = function fromObject(object) {
-            if (object instanceof $root.Package.Repository)
+            if (object instanceof root.Package.Repository)
                 return object;
-            var message = new $root.Package.Repository();
+            var message = new root.Package.Repository();
             if (object.type != null)
                 message.type = String(object.type);
             if (object.url != null)
@@ -846,7 +846,7 @@ $root.Package = (function() {
          * @memberof Package.Repository
          * @static
          * @param {Package.Repository} message Repository
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @param {protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
         Repository.toObject = function toObject(message, options) {
@@ -872,7 +872,7 @@ $root.Package = (function() {
          * @returns {Object.<string,*>} JSON object
          */
         Repository.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            return this.constructor.toObject(this, protobuf.util.toJSONOptions);
         };
 
         return Repository;
@@ -881,4 +881,4 @@ $root.Package = (function() {
     return Package;
 })();
 
-module.exports = $root;
+module.exports = root;

@@ -1,16 +1,16 @@
 "use strict";
-var $protobuf = require("../..");
-module.exports = exports = $protobuf.descriptor = $protobuf.Root.fromJSON(require("../../google/protobuf/descriptor.json")).lookup(".google.protobuf");
+var protobuf = require("../..");
+module.exports = exports = protobuf.descriptor = protobuf.Root.fromJSON(require("../../google/protobuf/descriptor.json")).lookup(".google.protobuf");
 
-var Namespace = $protobuf.Namespace,
-    Root      = $protobuf.Root,
-    Enum      = $protobuf.Enum,
-    Type      = $protobuf.Type,
-    Field     = $protobuf.Field,
-    MapField  = $protobuf.MapField,
-    OneOf     = $protobuf.OneOf,
-    Service   = $protobuf.Service,
-    Method    = $protobuf.Method;
+var Namespace = protobuf.Namespace,
+    Root      = protobuf.Root,
+    Enum      = protobuf.Enum,
+    Type      = protobuf.Type,
+    Field     = protobuf.Field,
+    MapField  = protobuf.MapField,
+    OneOf     = protobuf.OneOf,
+    Service   = protobuf.Service,
+    Method    = protobuf.Method;
 
 // --- Root ---
 
@@ -457,7 +457,7 @@ Field.prototype.toDescriptor = function toDescriptor(syntax) {
     if (this.map) {
 
         descriptor.type = 11; // message
-        descriptor.typeName = $protobuf.util.ucFirst(this.name); // fieldName -> FieldNameEntry (built in Type#toDescriptor)
+        descriptor.typeName = protobuf.util.ucFirst(this.name); // fieldName -> FieldNameEntry (built in Type#toDescriptor)
         descriptor.label = 3; // repeated
 
     } else {
@@ -816,7 +816,7 @@ function fromDescriptorOptions(options, type) {
                     val = field.resolvedType.valuesById[val];
                 out.push(underScore(key), val);
             }
-    return out.length ? $protobuf.util.toObject(out) : undefined;
+    return out.length ? protobuf.util.toObject(out) : undefined;
 }
 
 // Converts an options object to descriptor options
@@ -829,11 +829,11 @@ function toDescriptorOptions(options, type) {
         if (key === "default")
             continue;
         var field = type.fields[key];
-        if (!field && !(field = type.fields[key = $protobuf.util.camelCase(key)]))
+        if (!field && !(field = type.fields[key = protobuf.util.camelCase(key)]))
             continue;
         out.push(key, val);
     }
-    return out.length ? type.fromObject($protobuf.util.toObject(out)) : undefined;
+    return out.length ? type.fromObject(protobuf.util.toObject(out)) : undefined;
 }
 
 // Calculates the shortest relative path from `from` to `to`.
@@ -869,7 +869,7 @@ function underScore(str) {
  * @name FileDescriptorSet
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -877,7 +877,7 @@ function underScore(str) {
  * @name FileDescriptorProto
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -887,9 +887,9 @@ function underScore(str) {
  * @property {Type} ExtensionRange
  * @property {Type} ReservedRange
  * @const
- * @tstype $protobuf.Type & {
- *     ExtensionRange: $protobuf.Type,
- *     ReservedRange: $protobuf.Type
+ * @tstype protobuf.Type & {
+ *     ExtensionRange: protobuf.Type,
+ *     ReservedRange: protobuf.Type
  * }
  */
 
@@ -900,9 +900,9 @@ function underScore(str) {
  * @property {Enum} Label
  * @property {Enum} Type
  * @const
- * @tstype $protobuf.Type & {
- *     Label: $protobuf.Enum,
- *     Type: $protobuf.Enum
+ * @tstype protobuf.Type & {
+ *     Label: protobuf.Enum,
+ *     Type: protobuf.Enum
  * }
  */
 
@@ -911,7 +911,7 @@ function underScore(str) {
  * @name OneofDescriptorProto
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -919,7 +919,7 @@ function underScore(str) {
  * @name EnumDescriptorProto
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -927,7 +927,7 @@ function underScore(str) {
  * @name ServiceDescriptorProto
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -935,7 +935,7 @@ function underScore(str) {
  * @name EnumValueDescriptorProto
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -943,7 +943,7 @@ function underScore(str) {
  * @name MethodDescriptorProto
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -952,8 +952,8 @@ function underScore(str) {
  * @type {Type}
  * @property {Enum} OptimizeMode
  * @const
- * @tstype $protobuf.Type & {
- *     OptimizeMode: $protobuf.Enum
+ * @tstype protobuf.Type & {
+ *     OptimizeMode: protobuf.Enum
  * }
  */
 
@@ -962,7 +962,7 @@ function underScore(str) {
  * @name MessageOptions
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -972,9 +972,9 @@ function underScore(str) {
  * @property {Enum} CType
  * @property {Enum} JSType
  * @const
- * @tstype $protobuf.Type & {
- *     CType: $protobuf.Enum,
- *     JSType: $protobuf.Enum
+ * @tstype protobuf.Type & {
+ *     CType: protobuf.Enum,
+ *     JSType: protobuf.Enum
  * }
  */
 
@@ -983,7 +983,7 @@ function underScore(str) {
  * @name OneofOptions
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -991,7 +991,7 @@ function underScore(str) {
  * @name EnumOptions
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -999,7 +999,7 @@ function underScore(str) {
  * @name EnumValueOptions
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -1007,7 +1007,7 @@ function underScore(str) {
  * @name ServiceOptions
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -1015,7 +1015,7 @@ function underScore(str) {
  * @name MethodOptions
  * @type {Type}
  * @const
- * @tstype $protobuf.Type
+ * @tstype protobuf.Type
  */
 
 /**
@@ -1024,8 +1024,8 @@ function underScore(str) {
  * @type {Type}
  * @property {Type} NamePart
  * @const
- * @tstype $protobuf.Type & {
- *     NamePart: $protobuf.Type
+ * @tstype protobuf.Type & {
+ *     NamePart: protobuf.Type
  * }
  */
 
@@ -1035,8 +1035,8 @@ function underScore(str) {
  * @type {Type}
  * @property {Type} Location
  * @const
- * @tstype $protobuf.Type & {
- *     Location: $protobuf.Type
+ * @tstype protobuf.Type & {
+ *     Location: protobuf.Type
  * }
  */
 
@@ -1046,7 +1046,7 @@ function underScore(str) {
  * @type {Type}
  * @property {Type} Annotation
  * @const
- * @tstype $protobuf.Type & {
- *     Annotation: $protobuf.Type
+ * @tstype protobuf.Type & {
+ *     Annotation: protobuf.Type
  * }
  */

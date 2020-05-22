@@ -31,7 +31,7 @@ function static_target(root, options, callback) {
         if (aliases.length) {
             if (config.comments)
                 push("// Common aliases");
-            push((config.es6 ? "const " : "var ") + aliases.map(function(name) { return "$" + name + " = $protobuf." + name; }).join(", ") + ";");
+            push((config.es6 ? "const " : "var ") + aliases.map(function(name) { return "$" + name + " = protobuf." + name; }).join(", ") + ";");
             push("");
         }
         if (config.comments) {
@@ -42,7 +42,7 @@ function static_target(root, options, callback) {
             push("// Exported root namespace");
         }
         var rootProp = util.safeProp(config.root || "default");
-        push((config.es6 ? "const" : "var") + " $root = $protobuf.roots" + rootProp + " || ($protobuf.roots" + rootProp + " = {});");
+        push((config.es6 ? "const" : "var") + " root = protobuf.roots" + rootProp + " || (protobuf.roots" + rootProp + " = {});");
         buildNamespace(null, root);
         return callback(null, out.join("\n"));
     } catch (err) {
@@ -96,7 +96,7 @@ function exportName(object, asInterface) {
 
 function escapeName(name) {
     if (!name)
-        return "$root";
+        return "root";
     return util.isReserved(name) ? name + "_" : name;
 }
 
@@ -247,7 +247,7 @@ function buildFunction(type, functionName, gen, scope) {
             )
                 return {
                     "type": "Identifier",
-                    "name": "$root" + type.fullName
+                    "name": "root" + type.fullName
                 };
             // replace types[N] with the field's actual type
             if (
@@ -257,7 +257,7 @@ function buildFunction(type, functionName, gen, scope) {
             )
                 return {
                     "type": "Identifier",
-                    "name": "$root" + type.fieldsArray[node.property.value].resolvedType.fullName
+                    "name": "root" + type.fieldsArray[node.property.value].resolvedType.fullName
                 };
             return undefined;
         }
@@ -469,8 +469,8 @@ function buildType(ref, type) {
             "@memberof " + exportName(type),
             "@static",
             "@param {" + exportName(type, !config.forceMessage) + "} " + (config.beautify ? "message" : "m") + " " + type.name + " message or plain object to encode",
-            "@param {$protobuf.Writer} [" + (config.beautify ? "writer" : "w") + "] Writer to encode to",
-            "@returns {$protobuf.Writer} Writer"
+            "@param {protobuf.Writer} [" + (config.beautify ? "writer" : "w") + "] Writer to encode to",
+            "@returns {protobuf.Writer} Writer"
         ]);
         buildFunction(type, "encode", protobuf.encoder(type));
 
@@ -482,8 +482,8 @@ function buildType(ref, type) {
                 "@memberof " + exportName(type),
                 "@static",
                 "@param {" + exportName(type, !config.forceMessage) + "} message " + type.name + " message or plain object to encode",
-                "@param {$protobuf.Writer} [writer] Writer to encode to",
-                "@returns {$protobuf.Writer} Writer"
+                "@param {protobuf.Writer} [writer] Writer to encode to",
+                "@returns {protobuf.Writer} Writer"
             ]);
             push(escapeName(type.name) + ".encodeDelimited = function encodeDelimited(message, writer) {");
             ++indent;
@@ -500,11 +500,11 @@ function buildType(ref, type) {
             "@function decode",
             "@memberof " + exportName(type),
             "@static",
-            "@param {$protobuf.Reader|Uint8Array} " + (config.beautify ? "reader" : "r") + " Reader or buffer to decode from",
+            "@param {protobuf.Reader|Uint8Array} " + (config.beautify ? "reader" : "r") + " Reader or buffer to decode from",
             "@param {number} [" + (config.beautify ? "length" : "l") + "] Message length if known beforehand",
             "@returns {" + exportName(type) + "} " + type.name,
             "@throws {Error} If the payload is not a reader or valid buffer",
-            "@throws {$protobuf.util.ProtocolError} If required fields are missing"
+            "@throws {protobuf.util.ProtocolError} If required fields are missing"
         ]);
         buildFunction(type, "decode", protobuf.decoder(type));
 
@@ -515,10 +515,10 @@ function buildType(ref, type) {
                 "@function decodeDelimited",
                 "@memberof " + exportName(type),
                 "@static",
-                "@param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from",
+                "@param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from",
                 "@returns {" + exportName(type) + "} " + type.name,
                 "@throws {Error} If the payload is not a reader or valid buffer",
-                "@throws {$protobuf.util.ProtocolError} If required fields are missing"
+                "@throws {protobuf.util.ProtocolError} If required fields are missing"
             ]);
             push(escapeName(type.name) + ".decodeDelimited = function decodeDelimited(reader) {");
             ++indent;
@@ -564,7 +564,7 @@ function buildType(ref, type) {
             "@memberof " + exportName(type),
             "@static",
             "@param {" + exportName(type) + "} " + (config.beautify ? "message" : "m") + " " + type.name,
-            "@param {$protobuf.IConversionOptions} [" + (config.beautify ? "options" : "o") + "] Conversion options",
+            "@param {protobuf.IConversionOptions} [" + (config.beautify ? "options" : "o") + "] Conversion options",
             "@returns {Object.<string,*>} Plain object"
         ]);
         buildFunction(type, "toObject", protobuf.converter.toObject(type));
@@ -579,7 +579,7 @@ function buildType(ref, type) {
         ]);
         push(escapeName(type.name) + ".prototype.toJSON = function toJSON() {");
         ++indent;
-            push("return this.constructor.toObject(this, $protobuf.util.toJSONOptions);");
+            push("return this.constructor.toObject(this, protobuf.util.toJSONOptions);");
         --indent;
         push("};");
     }
@@ -592,19 +592,19 @@ function buildService(ref, service) {
         "Constructs a new " + service.name + " service.",
         service.parent instanceof protobuf.Root ? "@exports " + escapeName(service.name) : "@memberof " + exportName(service.parent),
         "@classdesc " + (service.comment || "Represents " + aOrAn(service.name)),
-        "@extends $protobuf.rpc.Service",
+        "@extends protobuf.rpc.Service",
         "@constructor",
-        "@param {$protobuf.RPCImpl} rpcImpl RPC implementation",
+        "@param {protobuf.RPCImpl} rpcImpl RPC implementation",
         "@param {boolean} [requestDelimited=false] Whether requests are length-delimited",
         "@param {boolean} [responseDelimited=false] Whether responses are length-delimited"
     ]);
     push("function " + escapeName(service.name) + "(rpcImpl, requestDelimited, responseDelimited) {");
     ++indent;
-    push("$protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);");
+    push("protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);");
     --indent;
     push("}");
     push("");
-    push("(" + escapeName(service.name) + ".prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = " + escapeName(service.name) + ";");
+    push("(" + escapeName(service.name) + ".prototype = Object.create(protobuf.rpc.Service.prototype)).constructor = " + escapeName(service.name) + ";");
 
     if (config.create) {
         push("");
@@ -613,7 +613,7 @@ function buildService(ref, service) {
             "@function create",
             "@memberof " + exportName(service),
             "@static",
-            "@param {$protobuf.RPCImpl} rpcImpl RPC implementation",
+            "@param {protobuf.RPCImpl} rpcImpl RPC implementation",
             "@param {boolean} [requestDelimited=false] Whether requests are length-delimited",
             "@param {boolean} [responseDelimited=false] Whether responses are length-delimited",
             "@returns {" + escapeName(service.name) + "} RPC service. Useful where requests and/or responses are streamed."
@@ -652,7 +652,7 @@ function buildService(ref, service) {
         ]);
         push("Object.defineProperty(" + escapeName(service.name) + ".prototype" + util.safeProp(lcName) + " = function " + escapeName(lcName) + "(request, callback) {");
             ++indent;
-            push("return this.rpcCall(" + escapeName(lcName) + ", $root." + exportName(method.resolvedRequestType) + ", $root." + exportName(method.resolvedResponseType) + ", request, callback);");
+            push("return this.rpcCall(" + escapeName(lcName) + ", root." + exportName(method.resolvedRequestType) + ", root." + exportName(method.resolvedResponseType) + ", request, callback);");
             --indent;
         push("}, \"name\", { value: " + JSON.stringify(method.name) + " });");
         if (config.comments)

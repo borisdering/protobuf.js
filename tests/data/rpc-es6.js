@@ -1,36 +1,36 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
-import * as $protobuf from "../../minimal";
+import * as protobuf from "../../minimal";
 
 // Common aliases
-const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+const $Reader = protobuf.Reader, $Writer = protobuf.Writer, $util = protobuf.util;
 
 // Exported root namespace
-const $root = $protobuf.roots.test_rpc || ($protobuf.roots.test_rpc = {});
+const root = protobuf.roots.test_rpc || (protobuf.roots.test_rpc = {});
 
-export const MyService = $root.MyService = (() => {
+export const MyService = root.MyService = (() => {
 
     /**
      * Constructs a new MyService service.
      * @exports MyService
      * @classdesc Represents a MyService
-     * @extends $protobuf.rpc.Service
+     * @extends protobuf.rpc.Service
      * @constructor
-     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+     * @param {protobuf.RPCImpl} rpcImpl RPC implementation
      * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
      * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
      */
     function MyService(rpcImpl, requestDelimited, responseDelimited) {
-        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+        protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
     }
 
-    (MyService.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = MyService;
+    (MyService.prototype = Object.create(protobuf.rpc.Service.prototype)).constructor = MyService;
 
     /**
      * Creates new MyService service using the specified rpc implementation.
      * @function create
      * @memberof MyService
      * @static
-     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+     * @param {protobuf.RPCImpl} rpcImpl RPC implementation
      * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
      * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
      * @returns {MyService} RPC service. Useful where requests and/or responses are streamed.
@@ -59,7 +59,7 @@ export const MyService = $root.MyService = (() => {
      * @variation 1
      */
     Object.defineProperty(MyService.prototype.myMethod = function myMethod(request, callback) {
-        return this.rpcCall(myMethod, $root.MyRequest, $root.MyResponse, request, callback);
+        return this.rpcCall(myMethod, root.MyRequest, root.MyResponse, request, callback);
     }, "name", { value: "MyMethod" });
 
     /**
@@ -75,7 +75,7 @@ export const MyService = $root.MyService = (() => {
     return MyService;
 })();
 
-export const MyRequest = $root.MyRequest = (() => {
+export const MyRequest = root.MyRequest = (() => {
 
     /**
      * Properties of a MyRequest.
@@ -125,8 +125,8 @@ export const MyRequest = $root.MyRequest = (() => {
      * @memberof MyRequest
      * @static
      * @param {IMyRequest} message MyRequest message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     MyRequest.encode = function encode(message, writer) {
         if (!writer)
@@ -142,8 +142,8 @@ export const MyRequest = $root.MyRequest = (() => {
      * @memberof MyRequest
      * @static
      * @param {IMyRequest} message MyRequest message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     MyRequest.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
@@ -154,16 +154,16 @@ export const MyRequest = $root.MyRequest = (() => {
      * @function decode
      * @memberof MyRequest
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
      * @returns {MyRequest} MyRequest
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     MyRequest.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.MyRequest();
+        let end = length === undefined ? reader.len : reader.pos + length, message = new root.MyRequest();
         while (reader.pos < end) {
             let tag = reader.uint32();
             switch (tag >>> 3) {
@@ -183,10 +183,10 @@ export const MyRequest = $root.MyRequest = (() => {
      * @function decodeDelimited
      * @memberof MyRequest
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @returns {MyRequest} MyRequest
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     MyRequest.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
@@ -220,9 +220,9 @@ export const MyRequest = $root.MyRequest = (() => {
      * @returns {MyRequest} MyRequest
      */
     MyRequest.fromObject = function fromObject(object) {
-        if (object instanceof $root.MyRequest)
+        if (object instanceof root.MyRequest)
             return object;
-        let message = new $root.MyRequest();
+        let message = new root.MyRequest();
         if (object.path != null)
             message.path = String(object.path);
         return message;
@@ -234,7 +234,7 @@ export const MyRequest = $root.MyRequest = (() => {
      * @memberof MyRequest
      * @static
      * @param {MyRequest} message MyRequest
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @param {protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
     MyRequest.toObject = function toObject(message, options) {
@@ -256,13 +256,13 @@ export const MyRequest = $root.MyRequest = (() => {
      * @returns {Object.<string,*>} JSON object
      */
     MyRequest.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        return this.constructor.toObject(this, protobuf.util.toJSONOptions);
     };
 
     return MyRequest;
 })();
 
-export const MyResponse = $root.MyResponse = (() => {
+export const MyResponse = root.MyResponse = (() => {
 
     /**
      * Properties of a MyResponse.
@@ -312,8 +312,8 @@ export const MyResponse = $root.MyResponse = (() => {
      * @memberof MyResponse
      * @static
      * @param {IMyResponse} message MyResponse message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     MyResponse.encode = function encode(message, writer) {
         if (!writer)
@@ -329,8 +329,8 @@ export const MyResponse = $root.MyResponse = (() => {
      * @memberof MyResponse
      * @static
      * @param {IMyResponse} message MyResponse message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     MyResponse.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
@@ -341,16 +341,16 @@ export const MyResponse = $root.MyResponse = (() => {
      * @function decode
      * @memberof MyResponse
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
      * @returns {MyResponse} MyResponse
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     MyResponse.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.MyResponse();
+        let end = length === undefined ? reader.len : reader.pos + length, message = new root.MyResponse();
         while (reader.pos < end) {
             let tag = reader.uint32();
             switch (tag >>> 3) {
@@ -370,10 +370,10 @@ export const MyResponse = $root.MyResponse = (() => {
      * @function decodeDelimited
      * @memberof MyResponse
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @returns {MyResponse} MyResponse
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     MyResponse.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
@@ -407,9 +407,9 @@ export const MyResponse = $root.MyResponse = (() => {
      * @returns {MyResponse} MyResponse
      */
     MyResponse.fromObject = function fromObject(object) {
-        if (object instanceof $root.MyResponse)
+        if (object instanceof root.MyResponse)
             return object;
-        let message = new $root.MyResponse();
+        let message = new root.MyResponse();
         if (object.status != null)
             message.status = object.status | 0;
         return message;
@@ -421,7 +421,7 @@ export const MyResponse = $root.MyResponse = (() => {
      * @memberof MyResponse
      * @static
      * @param {MyResponse} message MyResponse
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @param {protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
     MyResponse.toObject = function toObject(message, options) {
@@ -443,10 +443,10 @@ export const MyResponse = $root.MyResponse = (() => {
      * @returns {Object.<string,*>} JSON object
      */
     MyResponse.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        return this.constructor.toObject(this, protobuf.util.toJSONOptions);
     };
 
     return MyResponse;
 })();
 
-export { $root as default };
+export { root as default };

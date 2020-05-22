@@ -19,7 +19,7 @@ function json_module(root, options, callback) {
     try {
         var rootProp = protobuf.util.safeProp(options.root || "default");
         var output = [
-            (options.es6 ? "const" : "var") + " $root = ($protobuf.roots" + rootProp + " || ($protobuf.roots" + rootProp + " = new $protobuf.Root()))\n"
+            (options.es6 ? "const" : "var") + " root = (protobuf.roots" + rootProp + " || (protobuf.roots" + rootProp + " = new protobuf.Root()))\n"
         ];
         if (root.options) {
             var optionsJson = jsonSafeProp(JSON.stringify(root.options, null, 2));

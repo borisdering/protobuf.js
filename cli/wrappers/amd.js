@@ -1,7 +1,7 @@
-define([$DEPENDENCY], function($protobuf) {
+define([$DEPENDENCY], function(protobuf) {
     "use strict";
 
     $OUTPUT;
 
-    return $root;
+    return root;
 });

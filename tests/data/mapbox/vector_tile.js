@@ -1,15 +1,15 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
 "use strict";
 
-var $protobuf = require("../../../minimal");
+var protobuf = require("../../../minimal");
 
 // Common aliases
-var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+var $Reader = protobuf.Reader, $Writer = protobuf.Writer, $util = protobuf.util;
 
 // Exported root namespace
-var $root = $protobuf.roots.test_vector_tile || ($protobuf.roots.test_vector_tile = {});
+var root = protobuf.roots.test_vector_tile || (protobuf.roots.test_vector_tile = {});
 
-$root.vector_tile = (function() {
+root.vector_tile = (function() {
 
     /**
      * Namespace vector_tile.
@@ -69,15 +69,15 @@ $root.vector_tile = (function() {
          * @memberof vector_tile.Tile
          * @static
          * @param {vector_tile.ITile} message Tile message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
+         * @param {protobuf.Writer} [writer] Writer to encode to
+         * @returns {protobuf.Writer} Writer
          */
         Tile.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
             if (message.layers != null && message.layers.length)
                 for (var i = 0; i < message.layers.length; ++i)
-                    $root.vector_tile.Tile.Layer.encode(message.layers[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                    root.vector_tile.Tile.Layer.encode(message.layers[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             return writer;
         };
 
@@ -87,8 +87,8 @@ $root.vector_tile = (function() {
          * @memberof vector_tile.Tile
          * @static
          * @param {vector_tile.ITile} message Tile message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
+         * @param {protobuf.Writer} [writer] Writer to encode to
+         * @returns {protobuf.Writer} Writer
          */
         Tile.encodeDelimited = function encodeDelimited(message, writer) {
             return this.encode(message, writer).ldelim();
@@ -99,23 +99,23 @@ $root.vector_tile = (function() {
          * @function decode
          * @memberof vector_tile.Tile
          * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @param {number} [length] Message length if known beforehand
          * @returns {vector_tile.Tile} Tile
          * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
         Tile.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.vector_tile.Tile();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new root.vector_tile.Tile();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 3:
                     if (!(message.layers && message.layers.length))
                         message.layers = [];
-                    message.layers.push($root.vector_tile.Tile.Layer.decode(reader, reader.uint32()));
+                    message.layers.push(root.vector_tile.Tile.Layer.decode(reader, reader.uint32()));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -130,10 +130,10 @@ $root.vector_tile = (function() {
          * @function decodeDelimited
          * @memberof vector_tile.Tile
          * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
          * @returns {vector_tile.Tile} Tile
          * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         * @throws {protobuf.util.ProtocolError} If required fields are missing
          */
         Tile.decodeDelimited = function decodeDelimited(reader) {
             if (!(reader instanceof $Reader))
@@ -156,7 +156,7 @@ $root.vector_tile = (function() {
                 if (!Array.isArray(message.layers))
                     return "layers: array expected";
                 for (var i = 0; i < message.layers.length; ++i) {
-                    var error = $root.vector_tile.Tile.Layer.verify(message.layers[i]);
+                    var error = root.vector_tile.Tile.Layer.verify(message.layers[i]);
                     if (error)
                         return "layers." + error;
                 }
@@ -173,9 +173,9 @@ $root.vector_tile = (function() {
          * @returns {vector_tile.Tile} Tile
          */
         Tile.fromObject = function fromObject(object) {
-            if (object instanceof $root.vector_tile.Tile)
+            if (object instanceof root.vector_tile.Tile)
                 return object;
-            var message = new $root.vector_tile.Tile();
+            var message = new root.vector_tile.Tile();
             if (object.layers) {
                 if (!Array.isArray(object.layers))
                     throw TypeError(".vector_tile.Tile.layers: array expected");
@@ -183,7 +183,7 @@ $root.vector_tile = (function() {
                 for (var i = 0; i < object.layers.length; ++i) {
                     if (typeof object.layers[i] !== "object")
                         throw TypeError(".vector_tile.Tile.layers: object expected");
-                    message.layers[i] = $root.vector_tile.Tile.Layer.fromObject(object.layers[i]);
+                    message.layers[i] = root.vector_tile.Tile.Layer.fromObject(object.layers[i]);
                 }
             }
             return message;
@@ -195,7 +195,7 @@ $root.vector_tile = (function() {
          * @memberof vector_tile.Tile
          * @static
          * @param {vector_tile.Tile} message Tile
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @param {protobuf.IConversionOptions} [options] Conversion options
          * @returns {Object.<string,*>} Plain object
          */
         Tile.toObject = function toObject(message, options) {
@@ -207,7 +207,7 @@ $root.vector_tile = (function() {
             if (message.layers && message.layers.length) {
                 object.layers = [];
                 for (var j = 0; j < message.layers.length; ++j)
-                    object.layers[j] = $root.vector_tile.Tile.Layer.toObject(message.layers[j], options);
+                    object.layers[j] = root.vector_tile.Tile.Layer.toObject(message.layers[j], options);
             }
             return object;
         };
@@ -220,7 +220,7 @@ $root.vector_tile = (function() {
          * @returns {Object.<string,*>} JSON object
          */
         Tile.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            return this.constructor.toObject(this, protobuf.util.toJSONOptions);
         };
 
         /**
@@ -345,8 +345,8 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Value
              * @static
              * @param {vector_tile.Tile.IValue} message Value message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
+             * @param {protobuf.Writer} [writer] Writer to encode to
+             * @returns {protobuf.Writer} Writer
              */
             Value.encode = function encode(message, writer) {
                 if (!writer)
@@ -374,8 +374,8 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Value
              * @static
              * @param {vector_tile.Tile.IValue} message Value message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
+             * @param {protobuf.Writer} [writer] Writer to encode to
+             * @returns {protobuf.Writer} Writer
              */
             Value.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
@@ -386,16 +386,16 @@ $root.vector_tile = (function() {
              * @function decode
              * @memberof vector_tile.Tile.Value
              * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
              * @returns {vector_tile.Tile.Value} Value
              * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             * @throws {protobuf.util.ProtocolError} If required fields are missing
              */
             Value.decode = function decode(reader, length) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.vector_tile.Tile.Value();
+                var end = length === undefined ? reader.len : reader.pos + length, message = new root.vector_tile.Tile.Value();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
@@ -433,10 +433,10 @@ $root.vector_tile = (function() {
              * @function decodeDelimited
              * @memberof vector_tile.Tile.Value
              * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @returns {vector_tile.Tile.Value} Value
              * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             * @throws {protobuf.util.ProtocolError} If required fields are missing
              */
             Value.decodeDelimited = function decodeDelimited(reader) {
                 if (!(reader instanceof $Reader))
@@ -488,9 +488,9 @@ $root.vector_tile = (function() {
              * @returns {vector_tile.Tile.Value} Value
              */
             Value.fromObject = function fromObject(object) {
-                if (object instanceof $root.vector_tile.Tile.Value)
+                if (object instanceof root.vector_tile.Tile.Value)
                     return object;
-                var message = new $root.vector_tile.Tile.Value();
+                var message = new root.vector_tile.Tile.Value();
                 if (object.stringValue != null)
                     message.stringValue = String(object.stringValue);
                 if (object.floatValue != null)
@@ -535,7 +535,7 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Value
              * @static
              * @param {vector_tile.Tile.Value} message Value
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @param {protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
             Value.toObject = function toObject(message, options) {
@@ -597,7 +597,7 @@ $root.vector_tile = (function() {
              * @returns {Object.<string,*>} JSON object
              */
             Value.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                return this.constructor.toObject(this, protobuf.util.toJSONOptions);
             };
 
             return Value;
@@ -682,8 +682,8 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Feature
              * @static
              * @param {vector_tile.Tile.IFeature} message Feature message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
+             * @param {protobuf.Writer} [writer] Writer to encode to
+             * @returns {protobuf.Writer} Writer
              */
             Feature.encode = function encode(message, writer) {
                 if (!writer)
@@ -713,8 +713,8 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Feature
              * @static
              * @param {vector_tile.Tile.IFeature} message Feature message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
+             * @param {protobuf.Writer} [writer] Writer to encode to
+             * @returns {protobuf.Writer} Writer
              */
             Feature.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
@@ -725,16 +725,16 @@ $root.vector_tile = (function() {
              * @function decode
              * @memberof vector_tile.Tile.Feature
              * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
              * @returns {vector_tile.Tile.Feature} Feature
              * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             * @throws {protobuf.util.ProtocolError} If required fields are missing
              */
             Feature.decode = function decode(reader, length) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.vector_tile.Tile.Feature();
+                var end = length === undefined ? reader.len : reader.pos + length, message = new root.vector_tile.Tile.Feature();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
@@ -777,10 +777,10 @@ $root.vector_tile = (function() {
              * @function decodeDelimited
              * @memberof vector_tile.Tile.Feature
              * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @returns {vector_tile.Tile.Feature} Feature
              * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             * @throws {protobuf.util.ProtocolError} If required fields are missing
              */
             Feature.decodeDelimited = function decodeDelimited(reader) {
                 if (!(reader instanceof $Reader))
@@ -838,9 +838,9 @@ $root.vector_tile = (function() {
              * @returns {vector_tile.Tile.Feature} Feature
              */
             Feature.fromObject = function fromObject(object) {
-                if (object instanceof $root.vector_tile.Tile.Feature)
+                if (object instanceof root.vector_tile.Tile.Feature)
                     return object;
-                var message = new $root.vector_tile.Tile.Feature();
+                var message = new root.vector_tile.Tile.Feature();
                 if (object.id != null)
                     if ($util.Long)
                         (message.id = $util.Long.fromValue(object.id)).unsigned = true;
@@ -891,7 +891,7 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Feature
              * @static
              * @param {vector_tile.Tile.Feature} message Feature
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @param {protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
             Feature.toObject = function toObject(message, options) {
@@ -921,7 +921,7 @@ $root.vector_tile = (function() {
                         object.tags[j] = message.tags[j];
                 }
                 if (message.type != null && message.hasOwnProperty("type"))
-                    object.type = options.enums === String ? $root.vector_tile.Tile.GeomType[message.type] : message.type;
+                    object.type = options.enums === String ? root.vector_tile.Tile.GeomType[message.type] : message.type;
                 if (message.geometry && message.geometry.length) {
                     object.geometry = [];
                     for (var j = 0; j < message.geometry.length; ++j)
@@ -938,7 +938,7 @@ $root.vector_tile = (function() {
              * @returns {Object.<string,*>} JSON object
              */
             Feature.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                return this.constructor.toObject(this, protobuf.util.toJSONOptions);
             };
 
             return Feature;
@@ -1042,8 +1042,8 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Layer
              * @static
              * @param {vector_tile.Tile.ILayer} message Layer message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
+             * @param {protobuf.Writer} [writer] Writer to encode to
+             * @returns {protobuf.Writer} Writer
              */
             Layer.encode = function encode(message, writer) {
                 if (!writer)
@@ -1051,13 +1051,13 @@ $root.vector_tile = (function() {
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                 if (message.features != null && message.features.length)
                     for (var i = 0; i < message.features.length; ++i)
-                        $root.vector_tile.Tile.Feature.encode(message.features[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                        root.vector_tile.Tile.Feature.encode(message.features[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 if (message.keys != null && message.keys.length)
                     for (var i = 0; i < message.keys.length; ++i)
                         writer.uint32(/* id 3, wireType 2 =*/26).string(message.keys[i]);
                 if (message.values != null && message.values.length)
                     for (var i = 0; i < message.values.length; ++i)
-                        $root.vector_tile.Tile.Value.encode(message.values[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                        root.vector_tile.Tile.Value.encode(message.values[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                 if (message.extent != null && Object.hasOwnProperty.call(message, "extent"))
                     writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.extent);
                 writer.uint32(/* id 15, wireType 0 =*/120).uint32(message.version);
@@ -1070,8 +1070,8 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Layer
              * @static
              * @param {vector_tile.Tile.ILayer} message Layer message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
+             * @param {protobuf.Writer} [writer] Writer to encode to
+             * @returns {protobuf.Writer} Writer
              */
             Layer.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
@@ -1082,16 +1082,16 @@ $root.vector_tile = (function() {
              * @function decode
              * @memberof vector_tile.Tile.Layer
              * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
              * @returns {vector_tile.Tile.Layer} Layer
              * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             * @throws {protobuf.util.ProtocolError} If required fields are missing
              */
             Layer.decode = function decode(reader, length) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.vector_tile.Tile.Layer();
+                var end = length === undefined ? reader.len : reader.pos + length, message = new root.vector_tile.Tile.Layer();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
@@ -1104,7 +1104,7 @@ $root.vector_tile = (function() {
                     case 2:
                         if (!(message.features && message.features.length))
                             message.features = [];
-                        message.features.push($root.vector_tile.Tile.Feature.decode(reader, reader.uint32()));
+                        message.features.push(root.vector_tile.Tile.Feature.decode(reader, reader.uint32()));
                         break;
                     case 3:
                         if (!(message.keys && message.keys.length))
@@ -1114,7 +1114,7 @@ $root.vector_tile = (function() {
                     case 4:
                         if (!(message.values && message.values.length))
                             message.values = [];
-                        message.values.push($root.vector_tile.Tile.Value.decode(reader, reader.uint32()));
+                        message.values.push(root.vector_tile.Tile.Value.decode(reader, reader.uint32()));
                         break;
                     case 5:
                         message.extent = reader.uint32();
@@ -1136,10 +1136,10 @@ $root.vector_tile = (function() {
              * @function decodeDelimited
              * @memberof vector_tile.Tile.Layer
              * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @returns {vector_tile.Tile.Layer} Layer
              * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             * @throws {protobuf.util.ProtocolError} If required fields are missing
              */
             Layer.decodeDelimited = function decodeDelimited(reader) {
                 if (!(reader instanceof $Reader))
@@ -1166,7 +1166,7 @@ $root.vector_tile = (function() {
                     if (!Array.isArray(message.features))
                         return "features: array expected";
                     for (var i = 0; i < message.features.length; ++i) {
-                        var error = $root.vector_tile.Tile.Feature.verify(message.features[i]);
+                        var error = root.vector_tile.Tile.Feature.verify(message.features[i]);
                         if (error)
                             return "features." + error;
                     }
@@ -1182,7 +1182,7 @@ $root.vector_tile = (function() {
                     if (!Array.isArray(message.values))
                         return "values: array expected";
                     for (var i = 0; i < message.values.length; ++i) {
-                        var error = $root.vector_tile.Tile.Value.verify(message.values[i]);
+                        var error = root.vector_tile.Tile.Value.verify(message.values[i]);
                         if (error)
                             return "values." + error;
                     }
@@ -1202,9 +1202,9 @@ $root.vector_tile = (function() {
              * @returns {vector_tile.Tile.Layer} Layer
              */
             Layer.fromObject = function fromObject(object) {
-                if (object instanceof $root.vector_tile.Tile.Layer)
+                if (object instanceof root.vector_tile.Tile.Layer)
                     return object;
-                var message = new $root.vector_tile.Tile.Layer();
+                var message = new root.vector_tile.Tile.Layer();
                 if (object.version != null)
                     message.version = object.version >>> 0;
                 if (object.name != null)
@@ -1216,7 +1216,7 @@ $root.vector_tile = (function() {
                     for (var i = 0; i < object.features.length; ++i) {
                         if (typeof object.features[i] !== "object")
                             throw TypeError(".vector_tile.Tile.Layer.features: object expected");
-                        message.features[i] = $root.vector_tile.Tile.Feature.fromObject(object.features[i]);
+                        message.features[i] = root.vector_tile.Tile.Feature.fromObject(object.features[i]);
                     }
                 }
                 if (object.keys) {
@@ -1233,7 +1233,7 @@ $root.vector_tile = (function() {
                     for (var i = 0; i < object.values.length; ++i) {
                         if (typeof object.values[i] !== "object")
                             throw TypeError(".vector_tile.Tile.Layer.values: object expected");
-                        message.values[i] = $root.vector_tile.Tile.Value.fromObject(object.values[i]);
+                        message.values[i] = root.vector_tile.Tile.Value.fromObject(object.values[i]);
                     }
                 }
                 if (object.extent != null)
@@ -1247,7 +1247,7 @@ $root.vector_tile = (function() {
              * @memberof vector_tile.Tile.Layer
              * @static
              * @param {vector_tile.Tile.Layer} message Layer
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @param {protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
             Layer.toObject = function toObject(message, options) {
@@ -1269,7 +1269,7 @@ $root.vector_tile = (function() {
                 if (message.features && message.features.length) {
                     object.features = [];
                     for (var j = 0; j < message.features.length; ++j)
-                        object.features[j] = $root.vector_tile.Tile.Feature.toObject(message.features[j], options);
+                        object.features[j] = root.vector_tile.Tile.Feature.toObject(message.features[j], options);
                 }
                 if (message.keys && message.keys.length) {
                     object.keys = [];
@@ -1279,7 +1279,7 @@ $root.vector_tile = (function() {
                 if (message.values && message.values.length) {
                     object.values = [];
                     for (var j = 0; j < message.values.length; ++j)
-                        object.values[j] = $root.vector_tile.Tile.Value.toObject(message.values[j], options);
+                        object.values[j] = root.vector_tile.Tile.Value.toObject(message.values[j], options);
                 }
                 if (message.extent != null && message.hasOwnProperty("extent"))
                     object.extent = message.extent;
@@ -1296,7 +1296,7 @@ $root.vector_tile = (function() {
              * @returns {Object.<string,*>} JSON object
              */
             Layer.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                return this.constructor.toObject(this, protobuf.util.toJSONOptions);
             };
 
             return Layer;
@@ -1308,4 +1308,4 @@ $root.vector_tile = (function() {
     return vector_tile;
 })();
 
-module.exports = $root;
+module.exports = root;

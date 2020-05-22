@@ -1,15 +1,15 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
 "use strict";
 
-var $protobuf = require("../../minimal");
+var protobuf = require("../../minimal");
 
 // Common aliases
-var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+var $Reader = protobuf.Reader, $Writer = protobuf.Writer, $util = protobuf.util;
 
 // Exported root namespace
-var $root = $protobuf.roots.test_comments || ($protobuf.roots.test_comments = {});
+var root = protobuf.roots.test_comments || (protobuf.roots.test_comments = {});
 
-$root.Test1 = (function() {
+root.Test1 = (function() {
 
     /**
      * Properties of a Test1.
@@ -80,8 +80,8 @@ $root.Test1 = (function() {
      * @memberof Test1
      * @static
      * @param {ITest1} message Test1 message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     Test1.encode = function encode(message, writer) {
         if (!writer)
@@ -101,8 +101,8 @@ $root.Test1 = (function() {
      * @memberof Test1
      * @static
      * @param {ITest1} message Test1 message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     Test1.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
@@ -113,16 +113,16 @@ $root.Test1 = (function() {
      * @function decode
      * @memberof Test1
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
      * @returns {Test1} Test1
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     Test1.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Test1();
+        var end = length === undefined ? reader.len : reader.pos + length, message = new root.Test1();
         while (reader.pos < end) {
             var tag = reader.uint32();
             switch (tag >>> 3) {
@@ -148,10 +148,10 @@ $root.Test1 = (function() {
      * @function decodeDelimited
      * @memberof Test1
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @returns {Test1} Test1
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     Test1.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
@@ -191,9 +191,9 @@ $root.Test1 = (function() {
      * @returns {Test1} Test1
      */
     Test1.fromObject = function fromObject(object) {
-        if (object instanceof $root.Test1)
+        if (object instanceof root.Test1)
             return object;
-        var message = new $root.Test1();
+        var message = new root.Test1();
         if (object.field1 != null)
             message.field1 = String(object.field1);
         if (object.field2 != null)
@@ -209,7 +209,7 @@ $root.Test1 = (function() {
      * @memberof Test1
      * @static
      * @param {Test1} message Test1
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @param {protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
     Test1.toObject = function toObject(message, options) {
@@ -238,13 +238,13 @@ $root.Test1 = (function() {
      * @returns {Object.<string,*>} JSON object
      */
     Test1.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        return this.constructor.toObject(this, protobuf.util.toJSONOptions);
     };
 
     return Test1;
 })();
 
-$root.Test2 = (function() {
+root.Test2 = (function() {
 
     /**
      * Properties of a Test2.
@@ -285,8 +285,8 @@ $root.Test2 = (function() {
      * @memberof Test2
      * @static
      * @param {ITest2} message Test2 message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     Test2.encode = function encode(message, writer) {
         if (!writer)
@@ -300,8 +300,8 @@ $root.Test2 = (function() {
      * @memberof Test2
      * @static
      * @param {ITest2} message Test2 message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
+     * @param {protobuf.Writer} [writer] Writer to encode to
+     * @returns {protobuf.Writer} Writer
      */
     Test2.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
@@ -312,16 +312,16 @@ $root.Test2 = (function() {
      * @function decode
      * @memberof Test2
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
      * @returns {Test2} Test2
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     Test2.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Test2();
+        var end = length === undefined ? reader.len : reader.pos + length, message = new root.Test2();
         while (reader.pos < end) {
             var tag = reader.uint32();
             switch (tag >>> 3) {
@@ -338,10 +338,10 @@ $root.Test2 = (function() {
      * @function decodeDelimited
      * @memberof Test2
      * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @returns {Test2} Test2
      * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     * @throws {protobuf.util.ProtocolError} If required fields are missing
      */
     Test2.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
@@ -372,9 +372,9 @@ $root.Test2 = (function() {
      * @returns {Test2} Test2
      */
     Test2.fromObject = function fromObject(object) {
-        if (object instanceof $root.Test2)
+        if (object instanceof root.Test2)
             return object;
-        return new $root.Test2();
+        return new root.Test2();
     };
 
     /**
@@ -383,7 +383,7 @@ $root.Test2 = (function() {
      * @memberof Test2
      * @static
      * @param {Test2} message Test2
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @param {protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
     Test2.toObject = function toObject() {
@@ -398,7 +398,7 @@ $root.Test2 = (function() {
      * @returns {Object.<string,*>} JSON object
      */
     Test2.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        return this.constructor.toObject(this, protobuf.util.toJSONOptions);
     };
 
     return Test2;
@@ -413,7 +413,7 @@ $root.Test2 = (function() {
  * @property {number} THREE=3 Preferred value with a comment.
  * @property {number} FOUR=4 Other value with a comment.
  */
-$root.Test3 = (function() {
+root.Test3 = (function() {
     var valuesById = {}, values = Object.create(valuesById);
     values[valuesById[1] = "ONE"] = 1;
     values[valuesById[2] = "TWO"] = 2;
@@ -422,4 +422,4 @@ $root.Test3 = (function() {
     return values;
 })();
 
-module.exports = $root;
+module.exports = root;
